@@ -1,48 +1,95 @@
- <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-      <div class="user-panel">
-        
+<?php 
+  $sql=$koneksi->query("select * from tb_user");
 
-      </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-      <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
-        <li class="header">MAIN NAVIGATION</li>
+  $pengguna=$sql->num_rows;
 
-         
-        
-            <li><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            <?php if ($_SESSION['admin']){ ?>
-            <li><a href="?page=pengguna"><i class="fa fa-dashboard"></i> Pengguna</a></li>
-            <li><a href="?page=pelanggan"><i class="fa fa-dashboard"></i> Pelanggan</a></li>
-            <?php } ?>
-            <li><a href="?page=laundry"><i class="fa fa-dashboard"></i> Transaksi Laundry</a></li>
-            <?php if ($_SESSION['admin']){ ?>
-            <li><a href="?page=transaksi"><i class="fa fa-money"></i> Transaksi </a></li>
-            <?php } ?>
 
-      
-         
-  
-       
-      </ul>
+  $sql2=$koneksi->query("select * from tb_pelanggan");
+
+  $pelanggan=$sql2->num_rows;
+
+
+  $sql23=$koneksi->query("select * from tb_laundry");
+
+  $laundry=$sql23->num_rows;
+
+
+  $sql4=$koneksi->query("select * from tb_transaksi");
+
+  $transaksi=$sql4->num_rows;
+
+
+ ?>
+ <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
     </section>
-    <!-- /.sidebar -->
-  </aside>
 
-  <!-- =============================================== -->
+    <!-- Main content -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3><?php  echo $pengguna ?></h3>
 
-  <!-- Content Wrapper. Contains page content -->
- 
+              <p>Data Pengguna</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?php  echo $pelanggan ?><sup style="font-size: 20px"></sup></h3>
+
+              <p>Data Pelanggan</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><?php  echo $laundry ?></h3>
+
+              <p>Transaksi Laundry</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3><?php  echo $transaksi ?></h3>
+
+              <p>Transaksi Pemasukan Pengeluaran</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
